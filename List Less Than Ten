@@ -8,14 +8,23 @@ Write this in one line of Python.
 Ask the user for a number and return a list that contains only elements from the original list a that are smaller than that number given by the user.
 
 
-
-
-
-
-
-
-
-
-
-
 solution: <script src="https://gist.github.com/huixinguan/bfcbba289b8cea1fc56a06bd1227392c.js"></script>
+#original
+a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+for i in a:
+    if i<5:
+        print (i)
+#extra 1
+b=[]
+for i in a:
+    if i <5:
+        b.append(i)
+print(b)
+#extra 2
+c = [x for x in a if x <5]
+print(c)
+#extra 3
+n = int(input('Enter a numer: '))
+d = [x for x in a if x<n]
+print(d)
+
