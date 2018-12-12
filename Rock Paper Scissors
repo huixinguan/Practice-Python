@@ -1,0 +1,38 @@
+Exercise 8 
+Make a two-player Rock-Paper-Scissors game. (Hint: Ask for player plays (using input), compare them, print out a message of congratulations to the winner, and ask if the players want to start a new game)
+Remember the rules:
+Rock beats scissors
+Scissors beats paper
+Paper beats rock
+
+solution: <script src="https://gist.github.com/huixinguan/60fef30e9b92308049f7bfc8167a89fb.js"></script>
+
+import random
+
+play = input('play or quit: ')
+
+while play != 'quit':
+    item = ['rock', 'paper', 'scissors']
+    p1 = random.choice(item)
+    p2 = random.choice(item)
+    if play == 'quit':
+        break
+    if (p1=='rock' and p2=='scissors' or
+        p1=='scissors' and p2=='paper' or
+        p1=='paper' and p2=='rock'):
+        print('player one is', p1, ', player two is', p2, ', player one wins')
+        print('play or quit')
+        play = input()
+    elif (p2 == 'rock' and p1 == 'scissors' or
+            p2 == 'scissors' and p1 == 'paper' or
+            p2 == 'paper' and p1 == 'rock'):
+        print('player one is', p1, ', player two is', p2,', player two wins')
+        print('play or quit')
+        play = input()
+    elif (p2 == 'rock' and p1 == 'rock' or
+            p2 == 'scissors' and p1 == 'scissors' or
+            p2 == 'paper' and p1 == 'paper'):
+        print('player one is', p1, ', player two is', p2,',tie')
+        print('play or quit')
+        play = input()
+
