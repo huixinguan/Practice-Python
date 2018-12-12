@@ -1,0 +1,16 @@
+#find the longest palindrome:
+
+a='xyx13lzyzl'
+final=[]
+max_len=0
+for i in range(len(a), 1, -1):
+  for j in range(i-1):
+    r=a[j:i]
+    if r==r[::-1]:
+      final.append(r)
+#print(final)
+for item in final:
+  if len(item)>max_len:
+    max_len=len(item)
+print(max_len)
+print(list(filter(lambda x: len(x)==max_len, final)))
