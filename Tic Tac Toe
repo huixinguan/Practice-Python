@@ -1,0 +1,68 @@
+
+def draw():
+    size = int(input('Enter the size of the board:'))
+    game = []
+    # row = []
+    for i in range(size):
+        row = []
+        for i in range(size):
+            row.append(" ")
+        game.append(row)
+    for i in range(size):
+        print(game[i])
+    play_turns(size, game)
+
+def play_turns(size, game):
+    count = 1
+    while count < size * size + 1:
+        coordination = input('Enter the location to play (row, col): ').split(',')
+        row = int(coordination[0]) - 1
+        col = int(coordination[1]) - 1
+
+        player1 = "X"
+        player2 = "O"
+
+        if count % 2 != 0 and game[row][col] == " ":
+            print('Player X is playing.')
+            game[row][col] = player1
+            check_winner(game)
+        elif count % 2 == 0 and game[row][col] == " ":
+            print('Player O is playing.')
+            game[row][col] = player2
+            check_winner(game)
+        else:
+            print("Invalid request. - Already placed.")
+            count -= 1
+        for i in range(size):
+            print(game[i])
+        count += 1
+
+def check_winner(game):
+    #check row
+    for row in game:
+        if len(set(row)) == 1 and set(row)!=" ":
+            winner = row[0]
+            if winner !=" ":
+                print('Player {} won'.format(winner))
+                exit()
+        elif len(set(row)) == 1 and set(row)==" ":
+            print('Please continue to play.')
+    #check column
+    for i in range(len(game)):
+        col = []
+        for row in game:
+            col.append(row[i])
+        if len(set(col)) ==1 and set(col)!=" ":
+            winner = col[0]
+            if winner !=" ":
+                print('Player {} won'.format(winner))
+                exit()
+        elif len(set(col)) ==1 and set(col)==" ":
+            print('Please continue to play.')
+    # check diagonal
+    if game[0][0]==game[1][1]==game[2][2] or game[0][2]==game[1][1]==game[2][0]:
+        winner = game[1][1]
+        if winner!= " ":
+            print('Player {} won'.format(winner))
+            exit()
+draw()
